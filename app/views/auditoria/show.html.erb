@@ -1,0 +1,9 @@
+<h1><%= @theater.name %>: Auditorium <%= @auditorium.name %></h1>
+
+<h3>Seating Capacity: <%= @auditorium.seating_capacity %></h3>
+<h3>Movie: </h3>
+<h3>Showtimes</h3>
+ 
+<%= link_to 'Edit', edit_theater_auditorium_path(@theater, @auditorium), class: "btn btn-default" %>
+<%= link_to 'Back', theater_auditoria_path(@theater), class: "btn btn-default" %>
+<%= link_to 'Delete', theater_auditorium_path(@theater, @auditorium), method: :delete, class: "btn btn-default" %>

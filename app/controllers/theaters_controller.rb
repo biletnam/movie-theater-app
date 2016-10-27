@@ -10,7 +10,7 @@ class TheatersController < ApplicationController
   end
 
   def create
-    @theater = Theater.create(theater_params)
+    @theater = Theater.new(theater_params)
 
     if @theater.save
       flash[:success] = "New theater successfully created!"

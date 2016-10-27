@@ -1,0 +1,33 @@
+<%= form_for([@theater, @auditorium]) do |f| %>
+  <% if @auditorium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@auditorium.errors.count, "error") %> prohibited this auditorium from being saved:</h2>
+
+      <ul>
+      <% @auditorium.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :theater_id %>
+    <%= f.collection_select(:theater_id, Theater.all, :id, :name, :prompt => 'Select Theater', class: "form-control") %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :seating_capacity %>
+    <%= f.number_field :seating_capacity, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-default" %>
+  </div>
+  <br>
+<% end %>

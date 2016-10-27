@@ -1,0 +1,7 @@
+<h1>Auditoriums</h1>
+
+<% @auditoriums.each do |auditorium| %>
+  <div class="well">
+    <h3><%= link_to auditorium.name, theater_auditorium_path(@theater, auditorium) %></h3>
+  </div>
+<% end %>
