@@ -7,4 +7,7 @@ Rails.application.routes.draw do
     resources :movies
   end
 
+  resources :movies do
+    resources :movie_screenings
+  end
 end

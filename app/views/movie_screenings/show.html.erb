@@ -1,0 +1,32 @@
+<div>
+  <h1><%= @movie_screening.movie.title %></h1>
+
+  <p>
+    <strong>Theater:</strong>
+    <%= @movie.theater.name %>
+  </p>
+
+  <p>
+    <strong>Auditorium:</strong>
+    <%= @movie_screening.movie.auditorium.name %>
+  </p>
+
+  <p>
+    <strong>Screening Date:</strong>
+    <%= @movie_screening.screening_date %>
+  </p>
+
+  <p>
+    <strong>Start Time:</strong>
+    <%= @movie_screening.start_time %>
+  </p>
+
+  <p>
+    <strong>Run Time:</strong>
+    <%= @movie_screening.movie.run_time_hours %>
+  </p>
+
+  <%= link_to 'Edit', edit_movie_movie_screening_path(@movie, @movie_screening), class: "btn btn-default" %>
+  <%= link_to 'Back', movie_movie_screenings_path(@movie), class: "btn btn-default" %>
+  <%= link_to 'Delete', movie_movie_screening_path(@movie, @movie_screening), method: :delete, class: "btn btn-default" %>
+</div>

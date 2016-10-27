@@ -1,0 +1,9 @@
+<h1>Movie Screenings for <%= @movie.title %></h1>
+
+<% @movie_screenings.each do |movie_screening| %>
+  <div class="well">
+    <h3><%= link_to movie_screening.start_time, movie_movie_screening_path(@movie, movie_screening) %></h3>
+    <p><strong>Theater: </strong><%= movie_screening.movie.theater.name %></p>
+    <p><strong>Auditorium: </strong><%= movie_screening.movie.auditorium.name %></p>
+  </div>
+<% end %>

@@ -3,7 +3,6 @@ class AuditoriaController < ApplicationController
   before_action :set_auditorium, only: [:show, :edit, :update, :destroy]
   
   def index
-    @theater = Theater.find(params[:theater_id])
     @auditoriums = @theater.auditoria
   end
 
@@ -39,7 +38,6 @@ class AuditoriaController < ApplicationController
   end
 
   def destroy
-    @theater = Theater.find(params[:theater_id])
     @auditorium.destroy
     redirect_to theater_auditoria_path(@theater)
   end
