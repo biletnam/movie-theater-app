@@ -1,5 +1,6 @@
 class Theater < ApplicationRecord
   has_many :auditoria
+  has_many :movies
   
   validates :name, :manager, :street_address, :city, :state, :zip, presence: true
 

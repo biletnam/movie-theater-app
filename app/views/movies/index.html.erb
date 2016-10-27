@@ -1,0 +1,8 @@
+<h1>Movies at <%= @theater.name %></h1>
+
+<% @movies.each do |movie| %>
+  <div class="well">
+    <h3><%= link_to movie.title, theater_movie_path(@theater, movie) %></h3>
+    <p><strong>Auditorium: </strong><%= movie.auditorium.name %></p>
+  </div>
+<% end %>
