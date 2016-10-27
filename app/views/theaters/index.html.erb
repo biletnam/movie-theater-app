@@ -1,0 +1,8 @@
+<h1>Movie Theaters</h1>
+
+<% @theaters.each do |theater| %>
+  <div class="well">
+    <h3><%= link_to theater.name, theater_path(theater) %></h3>
+    <p class="pre-line"><%= theater.full_address %></p>
+  </div>
+<% end %>
