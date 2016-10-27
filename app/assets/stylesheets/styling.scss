@@ -1,3 +1,22 @@
 .pre-line {
   white-space: pre-line;
 }
+
+.divider-50 {
+  height: 50px;
+}
+
+.bs-tabs {
+  margin-right: 0px;
+  margin-left: 0px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 4px 4px 0 0;
+  -webkit-box-shadow: none;
+  box-shadow: none
+}
+
+.tab-content {
+  padding: 20px 0px;
+}

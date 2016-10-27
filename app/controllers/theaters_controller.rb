@@ -21,6 +21,7 @@ class TheatersController < ApplicationController
   end
 
   def show
+    @auditoriums = @theater.auditoria
   end
 
   def edit
