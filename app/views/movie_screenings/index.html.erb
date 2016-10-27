@@ -1,5 +1,8 @@
-<h1>Movie Screenings for <%= @movie.title %></h1>
-
+<div>
+  <h1>Movie Screenings for <%= @movie.title %></h1>
+  <%= link_to 'Add Screening', new_movie_movie_screening_path(@movie), class: "btn btn-default" %>
+</div>
+<br>
 <% @movie_screenings.each do |movie_screening| %>
   <div class="well">
     <h3><%= link_to movie_screening.start_time, movie_movie_screening_path(@movie, movie_screening) %></h3>

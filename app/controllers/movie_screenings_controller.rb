@@ -37,8 +37,12 @@ class MovieScreeningsController < ApplicationController
   end
 
   def destroy
-    @movie_screening.destroy
-    redirect_to movie_movie_screenings_path(@movie)
+    if @movie_screening.destroy
+      redirect_to movie_movie_screenings_path(@movie)
+    else
+      flash[:warning] = "Unable to delete the movie screening"
+      redirect_to movie_movie_screening_path(@movie, @movie_screening)
+    end
   end
 
   private

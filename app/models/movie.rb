@@ -1,7 +1,7 @@
 class Movie < ApplicationRecord
   belongs_to :auditorium
   belongs_to :theater
-  has_many :movie_screenings
+  has_many :movie_screenings, dependent: :destroy
 
   validates :theater_id, :auditorium_id, :title, :run_time_minutes, presence: true
   validates :theater_id, :auditorium_id, :run_time_minutes, numericality: { only_integer: true }

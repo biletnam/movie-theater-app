@@ -1,8 +1,28 @@
-<h1><%= @theater.name %>: Auditorium <%= @auditorium.name %></h1>
+<div>
+  <% if @auditorium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@auditorium.errors.count, "error") %> prohibited this auditorium from being saved:</h2>
 
-<h3>Seating Capacity: <%= @auditorium.seating_capacity %></h3>
-<h3>Movie: </h3>
-<h3>Showtimes</h3>
+      <ul>
+      <% @auditorium.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <h1><%= @theater.name %>: Auditorium <%= @auditorium.name %></h1>
+  <h3>Seating Capacity: <%= @auditorium.seating_capacity %></h3>
+  <h3>Movie Showtimes</h3>
+  <% @movies.each do |movie| %>
+    <div class="well">
+      <h3><%= link_to movie.title, theater_movie_path(@theater, movie) %></h3>
+      <% movie.movie_screenings.each do |movie_screening| %>
+        <%= link_to movie_screening.start_time, movie_movie_screening_path(movie, movie_screening), class: "btn btn-sm btn-primary" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
  
 <%= link_to 'Edit', edit_theater_auditorium_path(@theater, @auditorium), class: "btn btn-default" %>
 <%= link_to 'Back', theater_auditoria_path(@theater), class: "btn btn-default" %>

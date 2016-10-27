@@ -1,6 +1,6 @@
 class Theater < ApplicationRecord
-  has_many :auditoria
-  has_many :movies
+  has_many :auditoria, dependent: :destroy
+  has_many :movies, dependent: :destroy
   
   validates :name, :manager, :street_address, :city, :state, :zip, presence: true
 

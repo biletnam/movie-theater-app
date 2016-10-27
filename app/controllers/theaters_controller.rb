@@ -38,8 +38,12 @@ class TheatersController < ApplicationController
   end
 
   def destroy
-    @theater.destroy
-    redirect_to theaters_path
+    if @theater.destroy
+      redirect_to theaters_path
+    else
+      flash[:warning] = "Unable to delete the theater"
+      redirect_to theater_path(@theater)
+    end
   end
 
   private

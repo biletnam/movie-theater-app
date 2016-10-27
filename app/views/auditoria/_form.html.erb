@@ -12,8 +12,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :theater_id %>
-    <%= f.collection_select(:theater_id, Theater.all, :id, :name, :prompt => 'Select Theater', class: "form-control") %>
+    <%= f.hidden_field :theater_id, value: @theater.id, class: "form-control" %>
   </div>
 
   <div class="form-group">

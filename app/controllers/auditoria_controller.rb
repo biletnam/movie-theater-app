@@ -22,6 +22,7 @@ class AuditoriaController < ApplicationController
   end
 
   def show
+    @movies = @auditorium.movies
   end
 
   def edit
@@ -38,8 +39,12 @@ class AuditoriaController < ApplicationController
   end
 
   def destroy
-    @auditorium.destroy
-    redirect_to theater_auditoria_path(@theater)
+    if @auditorium.destroy
+      redirect_to theater_auditoria_path(@theater)
+    else
+      flash[:warning] = "Unable to delete the auditorium"
+      redirect_to theater_auditorium_path(@theater, @auditorium)
+    end
   end
 
   private
