@@ -21,6 +21,12 @@
     <%= @movie_screening.movie.run_time_hours %>
   </p>
 
+  <p>
+    <strong>Tickets Available:</strong>
+    <%= @movie_screening.tickets_remaining %>
+  </p>
+
+  <%= link_to 'Buy Ticket', new_movie_screening_ticket_order_path(@movie_screening), class: "btn btn-default" %>
   <%= link_to 'Edit', edit_movie_movie_screening_path(@movie, @movie_screening), class: "btn btn-default" %>
   <%= link_to 'Back', movie_movie_screenings_path(@movie), class: "btn btn-default" %>
   <%= link_to 'Delete', movie_movie_screening_path(@movie, @movie_screening), method: :delete, class: "btn btn-default" %>

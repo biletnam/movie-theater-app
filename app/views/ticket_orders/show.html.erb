@@ -1,0 +1,48 @@
+<div>
+  <h1>Ticker Order Details</h1>
+  <p><em>You will receive an email receipt for your order at <%= @ticket_order.email %></em></p>
+
+  <div>
+    <h3>Movie Details</h3>
+    <p>
+      <strong>Theater:</strong>
+      <%= @movie_screening.movie.theater.name %>
+    </p>
+
+    <p>
+      <strong>Auditorium:</strong>
+      <%= @movie_screening.movie.auditorium.name %>
+    </p>
+
+    <p>
+      <strong>Start Time:</strong>
+      <%= @movie_screening.friendly_start_time %>
+    </p>
+
+    <p>
+      <strong>Run Time:</strong>
+      <%= @movie_screening.movie.run_time_hours %>
+    </p>
+  </div>
+
+  <div>
+    <h3>Payment Details</h3>
+    <p>
+      <strong>Order Name:</strong>
+      <%= @ticket_order.name %>
+    </p>
+
+    <p>
+      <strong>Order Email:</strong>
+      <%= @ticket_order.email %>
+    </p>
+
+    <p>
+      <strong>Total:</strong>
+      <%= number_to_currency(@ticket_order.price) %>
+    </p>
+  </div>
+
+  <%= link_to 'Back', movie_movie_screenings_path(@movie_screening.movie), class: "btn btn-default" %>
+  <%= link_to 'Delete', movie_screening_ticket_order_path(@movie_screening, @ticket_order), method: :delete, class: "btn btn-default" %>
+</div>

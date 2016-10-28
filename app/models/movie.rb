@@ -3,8 +3,9 @@ class Movie < ApplicationRecord
   belongs_to :theater
   has_many :movie_screenings, dependent: :destroy
 
-  validates :theater_id, :auditorium_id, :title, :run_time_minutes, presence: true
+  validates :theater_id, :auditorium_id, :title, :run_time_minutes, :ticket_price, presence: true
   validates :theater_id, :auditorium_id, :run_time_minutes, numericality: { only_integer: true }
+  validates :ticket_price, numericality: { greater_than_or_equal_to: 0}
 
   def run_time_hours
     hours = run_time_minutes / 60

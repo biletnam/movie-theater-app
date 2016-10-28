@@ -1,0 +1,9 @@
+<div>
+  <h1>Buy Ticket for <%= @movie_screening.movie.title %></h1>
+  <h3><strong>Theater: </strong><%= @movie_screening.movie.theater.name %></h3>
+  <h3><strong>Auditorium: </strong><%= @movie_screening.movie.auditorium.name %></h3>
+  <h3><strong>Screening Time: </strong><%= @movie_screening.friendly_start_time %></h3>
+</div>
+<%= render 'form' %>
+
+<%= link_to 'Back', movie_movie_screenings_path(@movie_screening.movie), class: "btn btn-default" %>

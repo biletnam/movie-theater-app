@@ -62,7 +62,8 @@ class MoviesController < ApplicationController
         :auditorium_id,
         :theater_id,
         :title,
-        :run_time_minutes
+        :run_time_minutes,
+        :ticket_price
       )
     end
 end

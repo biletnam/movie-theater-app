@@ -1,0 +1,50 @@
+<%= form_for([@movie_screening, @ticket_order]) do |f| %>
+  <% if @ticket_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ticket_order.errors.count, "error") %> prohibited this ticket order from being saved:</h2>
+
+      <ul>
+      <% @ticket_order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.hidden_field :movie_screening_id, value: @movie_screening.id, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.hidden_field :price, value: @movie_screening.movie.ticket_price %>
+  </div>
+
+  <div class="well">
+    <h3 class="text-center">Payment Details</h3>
+
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :credit_card_number %>
+      <%= f.text_field :credit_card_number, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :expiration_date, "Expiration Date (MM/YYYY)" %>
+      <%= f.date_select(:expiration_date, { use_month_numbers: true, discard_day: true, include_blank: true, order: [:month, :year] })  %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-default" %>
+  </div>
+  <br>
+<% end %>

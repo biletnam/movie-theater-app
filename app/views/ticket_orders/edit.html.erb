@@ -1,0 +1,6 @@
+<h1>Edit Ticket Order <%= @movie_screening.movie.title %></h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', movie_screening_ticket_order_path(@movie_screening, @ticket_order), class: "btn btn-default" %>
+<%= link_to 'Back', movie_screening_ticket_orders_path(@movie_screening), class: "btn btn-default" %>

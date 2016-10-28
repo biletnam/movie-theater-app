@@ -1,0 +1,38 @@
+<div>
+  <h1>Ticket Orders for <%= @movie_screening.movie.title %></h1>
+  <div class="divider-20"></div>
+  <p>
+    <strong>Auditorium: </strong>
+    <%= @movie_screening.movie.auditorium.name %>
+  </p>
+  <p>
+    <strong>Screening Time: </strong>
+    <%= @movie_screening.friendly_start_time %>
+  </p>
+  <p>
+    <strong>Tickets Sold: </strong>
+    <%= @movie_screening.tickets_sold %>
+  </p>
+  <p>
+    <strong>Tickets Available: </strong>
+    <%= @movie_screening.tickets_remaining %>
+  </p>
+</div>
+
+<div class="divider-20"></div>
+
+<% @ticket_orders.each do |ticket_order| %>
+  <div class="well">
+    <p>
+      <strong>Customer: </strong>
+      <%= ticket_order.name %>
+    </p>
+    <p>
+      <strong>Order Total: </strong>
+      <%= ticket_order.price %>
+    </p>
+
+    <%= link_to 'Order Details', movie_screening_ticket_order_path(@movie_screening, ticket_order), class: "btn btn-xs btn-default" %>
+    <%= link_to 'Delete', movie_screening_ticket_order_path(@movie_screening, ticket_order), method: :delete, class: "btn btn-xs btn-default" %>
+  </div>
+<% end %>

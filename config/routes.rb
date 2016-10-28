@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   resources :movies do
     resources :movie_screenings
   end
+
+  resources :movie_screenings do
+    resources :ticket_orders
+  end
 end
