@@ -13,9 +13,12 @@ class TicketOrdersController < ApplicationController
   def create
     @ticket_order = TicketOrder.new(ticket_order_params)
 
-    if @ticket_order.save
+    if !@movie_screening.sold_out? && @ticket_order.save
       flash[:success] = "Ticket successfully purchased!"
       redirect_to movie_screening_ticket_order_path(@movie_screening, @ticket_order)
+    elsif @movie_screening.sold_out?
+      flash[:warning] = "Sorry, this screening is sold out! Try selecting a different show time!"
+      redirect_to theater_movie_path(@movie_screening.movie.theater, @movie_screening.movie)
     else
       render :new
     end

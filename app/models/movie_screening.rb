@@ -14,6 +14,16 @@ class MovieScreening < ApplicationRecord
   end
 
   def tickets_remaining
-    movie.auditorium.seating_capacity - tickets_sold
+    unsold_tickets = movie.auditorium.seating_capacity - tickets_sold
+  end
+
+  def sold_out?
+    !(tickets_remaining > 0)
+  end
+
+  def disable_screening
+    if sold_out?
+      "disabled"
+    end
   end
 end

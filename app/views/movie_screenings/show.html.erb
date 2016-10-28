@@ -1,5 +1,9 @@
 <div>
   <h1>Screening for <%= @movie_screening.movie.title %></h1>
+  
+  <% if @movie_screening.sold_out? %>
+    <span class="sold-out"><h3>Sold Out!</h3></span>
+  <% end %>
 
   <p>
     <strong>Theater:</strong>
@@ -26,7 +30,9 @@
     <%= @movie_screening.tickets_remaining %>
   </p>
 
-  <%= link_to 'Buy Ticket', new_movie_screening_ticket_order_path(@movie_screening), class: "btn btn-default" %>
+  <% unless @movie_screening.sold_out? %>
+    <%= link_to 'Buy Ticket', new_movie_screening_ticket_order_path(@movie_screening), class: "btn btn-default" %>
+  <% end %>
   <%= link_to 'Edit', edit_movie_movie_screening_path(@movie, @movie_screening), class: "btn btn-default" %>
   <%= link_to 'Back', movie_movie_screenings_path(@movie), class: "btn btn-default" %>
   <%= link_to 'Delete', movie_movie_screening_path(@movie, @movie_screening), method: :delete, class: "btn btn-default" %>

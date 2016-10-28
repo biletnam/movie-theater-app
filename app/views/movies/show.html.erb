@@ -33,9 +33,18 @@
 
     <% @movie.movie_screenings.each do |movie_screening| %>
       <div class="well">
-        <h3><%= link_to movie_screening.friendly_start_time, movie_movie_screening_path(@movie, movie_screening) %></h3>
-        <p><strong>Theater: </strong><%= movie_screening.movie.theater.name %></p>
-        <p><strong>Auditorium: </strong><%= movie_screening.movie.auditorium.name %></p>
+        <h3><%= link_to movie_screening.friendly_start_time, movie_movie_screening_path(@movie, movie_screening), class: "disable" %></h3>
+        <p>
+          <strong>Theater: </strong>
+          <%= movie_screening.movie.theater.name %>
+        </p>
+        <p>
+          <strong>Auditorium: </strong>
+          <%= movie_screening.movie.auditorium.name %>
+        </p>
+        <% if movie_screening.sold_out? %>
+          <h4 class="sold-out"><strong>Sold Out!</strong></h4>
+        <% end %>
       </div>
     <% end %>
   </div>
