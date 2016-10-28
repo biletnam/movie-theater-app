@@ -1,5 +1,5 @@
 <div>
-  <h1><%= @movie_screening.movie.title %></h1>
+  <h1>Screening for <%= @movie_screening.movie.title %></h1>
 
   <p>
     <strong>Theater:</strong>
@@ -12,13 +12,8 @@
   </p>
 
   <p>
-    <strong>Screening Date:</strong>
-    <%= @movie_screening.screening_date %>
-  </p>
-
-  <p>
     <strong>Start Time:</strong>
-    <%= @movie_screening.start_time %>
+    <%= @movie_screening.friendly_start_time %>
   </p>
 
   <p>

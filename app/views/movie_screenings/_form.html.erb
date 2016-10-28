@@ -16,13 +16,8 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :screening_date %>
-    <%= f.date_select :screening_date, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
     <%= f.label :start_time %>
-    <%= f.time_select :start_time, class: "form-control" %>
+    <%= f.time_select :start_time, { :ampm => true } %>
   </div>
 
   <div class="actions">

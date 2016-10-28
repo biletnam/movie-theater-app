@@ -18,7 +18,7 @@
     <div class="well">
       <h3><%= link_to movie.title, theater_movie_path(@theater, movie) %></h3>
       <% movie.movie_screenings.each do |movie_screening| %>
-        <%= link_to movie_screening.start_time, movie_movie_screening_path(movie, movie_screening), class: "btn btn-sm btn-primary" %>
+        <%= link_to movie_screening.friendly_start_time, movie_movie_screening_path(movie, movie_screening), class: "btn btn-sm btn-primary" %>
       <% end %>
     </div>
   <% end %>
