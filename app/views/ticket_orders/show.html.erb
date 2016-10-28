@@ -1,5 +1,5 @@
 <div>
-  <h1>Ticker Order Details</h1>
+  <h1>Ticket Order Details</h1>
   <p><em>You will receive an email receipt for your order at <%= @ticket_order.email %></em></p>
 
   <div>
@@ -35,6 +35,16 @@
     <p>
       <strong>Order Email:</strong>
       <%= @ticket_order.email %>
+    </p>
+
+    <p>
+      <strong>Credit Card:</strong>
+      <%= @ticket_order.starred_cc_number %>
+    </p>
+
+    <p>
+      <strong>Credit Card Expiration Date:</strong>
+      <%= @ticket_order.cc_expiration_date %>
     </p>
 
     <p>

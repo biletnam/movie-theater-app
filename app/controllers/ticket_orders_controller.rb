@@ -14,6 +14,7 @@ class TicketOrdersController < ApplicationController
     @ticket_order = TicketOrder.new(ticket_order_params)
 
     if !@movie_screening.sold_out? && @ticket_order.save
+      TicketOrderMailer.ticket_order_email(@movie_screening, @ticket_order).deliver
       flash[:success] = "Ticket successfully purchased!"
       redirect_to movie_screening_ticket_order_path(@movie_screening, @ticket_order)
     elsif @movie_screening.sold_out?
