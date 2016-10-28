@@ -38,6 +38,7 @@ class MovieScreeningsController < ApplicationController
 
   def destroy
     if @movie_screening.destroy
+      flash[:success] = "Movie screening was successfully deleted!"
       redirect_to movie_movie_screenings_path(@movie)
     else
       flash[:warning] = "Unable to delete the movie screening"

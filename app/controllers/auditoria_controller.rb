@@ -40,6 +40,7 @@ class AuditoriaController < ApplicationController
 
   def destroy
     if @auditorium.destroy
+      flash[:success] = "Auditorium was successfully deleted!"
       redirect_to theater_auditoria_path(@theater)
     else
       flash[:warning] = "Unable to delete the auditorium"

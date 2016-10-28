@@ -14,7 +14,7 @@ class TicketOrdersController < ApplicationController
     @ticket_order = TicketOrder.new(ticket_order_params)
 
     if @ticket_order.save
-      flash[:success] = "New movie screening successfully added!"
+      flash[:success] = "Ticket successfully purchased!"
       redirect_to movie_screening_ticket_order_path(@movie_screening, @ticket_order)
     else
       render :new
@@ -38,6 +38,7 @@ class TicketOrdersController < ApplicationController
 
   def destroy
     if @ticket_order.destroy
+      flash[:success] = "Ticket order was successfully deleted!"
       redirect_to movie_screening_ticket_orders_path(@movie_screening)
     else
       flash[:warning] = "Unable to delete the ticket order"
