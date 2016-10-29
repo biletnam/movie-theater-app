@@ -1,9 +1,10 @@
 class MovieScreening < ApplicationRecord
   belongs_to :movie
+  belongs_to :theater
   has_many :ticket_orders, dependent: :destroy
 
-  validates :movie_id, :start_time, presence: true
-  validates :movie_id, numericality: { only_integer: true }
+  validates :movie_id, :theater_id, :start_time, presence: true
+  validates :movie_id, :theater_id, numericality: { only_integer: true }
 
   def friendly_start_time
     start_time.strftime("%l:%M %p")

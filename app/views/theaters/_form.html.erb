@@ -43,6 +43,10 @@
 
   <div class="actions">
     <%= f.submit "Submit", class: "btn btn-default" %>
+    <% if @theater.id %>
+      <%= link_to 'View Theater', theater_path(@theater), class: "btn btn-default" %>
+    <% end %>
+    <%= link_to 'Back To Theaters', theaters_path, class: "btn btn-default" %>
   </div>
   <br>
 <% end %>

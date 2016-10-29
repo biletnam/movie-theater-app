@@ -1,8 +1,12 @@
-<h1>Movie Theaters</h1>
+<div class="thumbnail padding-20">
+  <h1>Movie Theaters</h1>
 
-<% @theaters.each do |theater| %>
-  <div class="well">
-    <h3><%= link_to theater.name, theater_path(theater) %></h3>
-    <p class="pre-line"><%= theater.full_address %></p>
-  </div>
-<% end %>
+  <div class="divider-20"></div>
+
+  <% @theaters.each do |theater| %>
+    <div class="well">
+      <h3><%= link_to theater.name, theater_path(theater) %></h3>
+      <p class="pre-line"><%= theater.full_address %></p>
+    </div>
+  <% end %>
+</div>

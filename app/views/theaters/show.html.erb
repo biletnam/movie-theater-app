@@ -1,5 +1,7 @@
-<div>
+<div class="thumbnail padding-20">
   <h1><%= @theater.name %></h1>
+  
+  <div class="divider-20"></div>
 
   <p>
     <strong>Manager:</strong>
@@ -8,38 +10,27 @@
 
   <p>
     <strong>Street Address:</strong>
-    <%= @theater.street_address %>
+    <%= @theater.full_address %>
   </p>
 
-  <p>
-    <strong>City:</strong>
-    <%= @theater.city %>
-  </p>
-
-  <p>
-    <strong>State:</strong>
-    <%= @theater.state %>
-  </p>
-
-  <p>
-    <strong>Zip:</strong>
-    <%= @theater.zip %>
-  </p>
-
-  <%= link_to 'Edit', edit_theater_path(@theater), class: "btn btn-default" %>
-  <%= link_to 'Back', theaters_path, class: "btn btn-default" %>
-  <%= link_to 'Add Movie', new_theater_movie_path(@theater), class: "btn btn-default" %>
-  <%= link_to 'Add Auditorium', new_theater_auditorium_path(@theater), class: "btn btn-default" %>
-  <%= link_to 'Delete', theater_path(@theater), method: :delete, class: "btn btn-default" %>
+  <div class="divider-20"></div>
+  
+  <div class="button-list">
+    <%= link_to 'Edit', edit_theater_path(@theater), class: "btn btn-default" %>
+    <%= link_to 'Add Movie', new_theater_movie_path(@theater), class: "btn btn-default" %>
+    <%= link_to 'Add Auditorium', new_theater_auditorium_path(@theater), class: "btn btn-default" %>
+    <%= link_to 'Back To Theaters', theaters_path, class: "btn btn-default" %>
+    <%= link_to 'Delete', theater_path(@theater), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-default" %>
+  </div>
 </div>
 
-<div class="divider-50"></div>
-
-<div class="bs-tabs">
+<div class="bootstrap-tabs">
   <!-- Nav tabs -->
   <ul class="nav nav-pills" role="tablist">
     <li role="presentation" class="active"><a href="#movies" aria-controls="movies" role="tab" data-toggle="tab">Movies</a></li>
     <li role="presentation"><a href="#auditoriums" aria-controls="auditoriums" role="tab" data-toggle="tab">Auditoriums</a></li>
+    <li role="presentation"><a href="#ticket-orders" aria-controls="ticket-orders" role="tab" data-toggle="tab">Orders</a></li>
+    <li role="presentation"><a href="#movie-ticket-orders" aria-controls="movie-ticket-orders" role="tab" data-toggle="tab">Orders By Movie</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -62,6 +53,29 @@
       <% @auditoriums.each do |auditorium| %>
         <div class="well">
           <h3><%= link_to auditorium.name, theater_auditorium_path(@theater, auditorium) %></h3>
+        </div>
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="ticket-orders">
+      <% @ticket_orders.each do |ticket_order| %>
+        <div class="well">
+          <%= render 'ticket_orders/ticket_order_info', ticket_order: ticket_order %>
+        </div>
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="movie-ticket-orders">
+      <% @movies.each do |movie| %>
+        <div class="well">
+          <h4><%= movie.title %></h4>
+          <button class="btn btn-xs btn-default view-orders-btn">View Orders</button>
+
+          <div class="orders-for-movie">
+            <% movie.ticket_orders.order_date_desc.each do |ticket_order| %>
+              <div class="thumbnail padding-20">
+                <%= render 'ticket_orders/ticket_order_info', ticket_order: ticket_order %>
+              </div>
+            <% end %>
+          </div>
         </div>
       <% end %>
     </div>

@@ -14,5 +14,4 @@
 //= require jquery_ujs
 //= require jquery.payment
 //= require bootstrap-sprockets
-//= require turbolinks
 //= require_tree .

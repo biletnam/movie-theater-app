@@ -23,6 +23,7 @@ class TheatersController < ApplicationController
   def show
     @auditoriums = @theater.auditoria
     @movies = @theater.movies
+    @ticket_orders = @theater.ticket_orders.order_date_asc
   end
 
   def edit

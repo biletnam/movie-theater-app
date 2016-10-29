@@ -1,0 +1,25 @@
+<p>
+  <strong>Order Date: </strong>
+  <%= ticket_order.order_date %>
+</p>
+
+<p>
+  <strong>Movie: </strong>
+  <%= ticket_order.movie_screening.movie.title %>
+</p>
+
+<p>
+  <strong>Screening: </strong>
+  <%= ticket_order.movie_screening.friendly_start_time %>
+</p>
+<p>
+  <strong>Customer: </strong>
+  <%= ticket_order.name %>
+</p>
+<p>
+  <strong>Order Total: </strong>
+  <%= number_to_currency(ticket_order.price) %>
+</p>
+
+<%= link_to 'Order Details', movie_screening_ticket_order_path(ticket_order.movie_screening, ticket_order), class: "btn btn-xs btn-default" %>
+<%= link_to 'Delete', movie_screening_ticket_order_path(ticket_order.movie_screening, ticket_order), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-xs btn-default" %>

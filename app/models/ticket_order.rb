@@ -30,4 +30,16 @@ class TicketOrder < ApplicationRecord
   def cc_expiration_date
     expiration_date.strftime("%m/%Y")
   end
+
+  def order_date
+    created_at.strftime("%b %e, %Y - %I:%M %p")
+  end
+
+  def self.order_date_asc
+    order(created_at: :asc)
+  end
+
+  def self.order_date_desc
+    order(created_at: :desc)
+  end
 end

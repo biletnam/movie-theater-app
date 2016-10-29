@@ -59,6 +59,7 @@ class MovieScreeningsController < ApplicationController
     def movie_screening_params
       params.require(:movie_screening).permit(
         :movie_id,
+        :theater_id,
         :screening_date,
         :start_time,
         :end_time
