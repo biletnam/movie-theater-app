@@ -1,6 +1,22 @@
-<h1>Edit Ticket Order <%= @movie_screening.movie.title %></h1>
+<div class="thumbnail padding-20">
+  <h1>Edit Ticket Order For <%= @movie_screening.movie.title %></h1>
+  
+  <div class="divider-20"></div>
 
-<%= render 'form' %>
+  <div class="well">
+    <p>
+      <strong>Theater: </strong>
+      <%= @movie_screening.movie.theater.name %>
+    </p>
+    <p>
+      <strong>Auditorium: </strong>
+      <%= @movie_screening.movie.auditorium.name %>
+    </p>
+    <p>
+      <strong>Screening Time: </strong>
+      <%= @movie_screening.friendly_start_time %>
+    </p>
+  </div>
 
-<%= link_to 'Show', movie_screening_ticket_order_path(@movie_screening, @ticket_order), class: "btn btn-default" %>
-<%= link_to 'Back', movie_screening_ticket_orders_path(@movie_screening), class: "btn btn-default" %>
+  <%= render 'form' %>
+</div>

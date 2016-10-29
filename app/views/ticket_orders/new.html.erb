@@ -1,18 +1,22 @@
-<div>
-  <h1>Buy Ticket for <%= @movie_screening.movie.title %></h1>
-  <h3>
-    <strong>Theater: </strong>
-    <%= @movie_screening.movie.theater.name %>
-  </h3>
-  <h3>
-    <strong>Auditorium: </strong>
-    <%= @movie_screening.movie.auditorium.name %>
-  </h3>
-  <h3>
-    <strong>Screening Time: </strong>
-    <%= @movie_screening.friendly_start_time %>
-  </h3>
-</div>
-<%= render 'form' %>
+<div class="thumbnail padding-20">
+  <h1>Buy Ticket For <%= @movie_screening.movie.title %></h1>
+  
+  <div class="divider-20"></div>
 
-<%= link_to 'Back', movie_movie_screenings_path(@movie_screening.movie), class: "btn btn-default" %>
+  <div class="well">
+    <p>
+      <strong>Theater: </strong>
+      <%= @movie_screening.movie.theater.name %>
+    </p>
+    <p>
+      <strong>Auditorium: </strong>
+      <%= @movie_screening.movie.auditorium.name %>
+    </p>
+    <p>
+      <strong>Screening Time: </strong>
+      <%= @movie_screening.friendly_start_time %>
+    </p>
+  </div>
+
+  <%= render 'form' %>
+</div>

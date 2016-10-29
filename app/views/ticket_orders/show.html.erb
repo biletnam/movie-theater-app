@@ -1,8 +1,11 @@
-<div>
+<div class="thumbnail padding-20">
   <h1>Ticket Order Details</h1>
+
+  <div class="divider-20"></div>
+
   <p><em>You will receive an email receipt for your order at <%= @ticket_order.email %></em></p>
 
-  <div>
+  <div class="well">
     <h3>Customer Information</h3>
 
     <p>
@@ -19,7 +22,9 @@
       <strong>Order Email:</strong>
       <%= @ticket_order.email %>
     </p>
+  </div>
 
+  <div class="well">
     <h3>Movie Details</h3>
     
     <p>
@@ -48,7 +53,7 @@
     </p>
   </div>
 
-  <div>
+  <div class="well">
     <h3>Payment Details</h3>
 
     <p>
@@ -67,6 +72,6 @@
     </p>
   </div>
 
-  <%= link_to 'Back', movie_movie_screenings_path(@movie_screening.movie), class: "btn btn-default" %>
-  <%= link_to 'Delete', movie_screening_ticket_order_path(@movie_screening, @ticket_order), method: :delete, class: "btn btn-default" %>
+  <%= link_to 'Edit Order', edit_movie_screening_ticket_order_path(@movie_screening, @ticket_order), class: "btn btn-default" %>
+  <%= link_to 'Delete', movie_screening_ticket_order_path(@movie_screening, @ticket_order), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-default" %>
 </div>
