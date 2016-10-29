@@ -6,6 +6,7 @@ class TicketOrder < ApplicationRecord
   validates :movie_screening_id, :price, :ticket_date, :name, :email, :expiration_date, presence: true
   validate :current_ticket_date, on: :create
   validates :credit_card_number, presence: true, credit_card_number: true
+  validate :expiration_date_cannot_be_in_the_past
   validates :movie_screening_id, numericality: { only_integer: true }
   validates :price, numericality: { greater_than_or_equal_to: 0}
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
@@ -49,4 +50,10 @@ class TicketOrder < ApplicationRecord
       errors.add(:ticket_date, "is in the past and no longer available for purchase")
     end
   end  
+
+  def expiration_date_cannot_be_in_the_past
+    if expiration_date.present? && expiration_date < Date.today
+      errors.add(:expiration_date, "can't be in the past")
+    end
+  end
 end
