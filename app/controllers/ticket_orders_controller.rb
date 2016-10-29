@@ -65,6 +65,7 @@ class TicketOrdersController < ApplicationController
       params.require(:ticket_order).permit(
         :movie_screening_id,
         :price,
+        :ticket_date,
         :paid,
         :name,
         :email,

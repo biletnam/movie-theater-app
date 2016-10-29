@@ -40,7 +40,7 @@
   </div>
   
   <div class="button-list">
-    <% unless @movie_screening.sold_out? %>
+    <% unless @movie_screening.sold_out? || @movie_screening.date_invalid_purchase? %>
       <%= link_to 'Buy Ticket', new_movie_screening_ticket_order_path(@movie_screening), class: "btn btn-default" %>
     <% end %>
     <%= link_to 'Edit', edit_movie_movie_screening_path(@movie, @movie_screening), class: "btn btn-default" %>

@@ -3,7 +3,8 @@ class TicketOrder < ApplicationRecord
 
   belongs_to :movie_screening
 
-  validates :movie_screening_id, :price, :name, :email, :expiration_date, presence: true
+  validates :movie_screening_id, :price, :ticket_date, :name, :email, :expiration_date, presence: true
+  validate :current_ticket_date, on: :create
   validates :credit_card_number, presence: true, credit_card_number: true
   validates :movie_screening_id, numericality: { only_integer: true }
   validates :price, numericality: { greater_than_or_equal_to: 0}
@@ -42,4 +43,10 @@ class TicketOrder < ApplicationRecord
   def self.order_date_desc
     order(created_at: :desc)
   end
+
+  def current_ticket_date
+    if ticket_date.present? && ticket_date < Date.today
+      errors.add(:ticket_date, "is in the past and no longer available for purchase")
+    end
+  end  
 end

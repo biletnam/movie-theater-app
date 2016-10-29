@@ -19,6 +19,10 @@
     <%= f.hidden_field :price, value: @movie_screening.movie.ticket_price %>
   </div>
 
+  <div class="form-group">
+    <%= f.hidden_field :ticket_date, value: @movie_screening.screening_date %>
+  </div>
+
   <div class="well">
     <h3 class="text-center">Payment Details</h3>
 

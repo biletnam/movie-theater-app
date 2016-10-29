@@ -16,10 +16,6 @@ class MovieScreening < ApplicationRecord
     screening_date.strftime("%b %e, %Y")
   end
 
-  def short_screening_date
-    screening_date.strftime("%m/%d/%Y")
-  end
-
   def tickets_sold
     ticket_orders.count
   end
@@ -38,7 +34,12 @@ class MovieScreening < ApplicationRecord
     end
   end
 
-  # def self.current_ordered_screenings
-  #   where(screening_date: Date.today)
-  # end
+  def date_invalid_purchase?
+    if screening_date < Date.today
+      true
+    else
+      false
+    end
+  end
+
 end
