@@ -31,4 +31,8 @@ class Movie < ApplicationRecord
     end
     run_time
   end
+
+  def total_orders
+    ticket_orders.count
+  end
 end

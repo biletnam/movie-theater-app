@@ -41,7 +41,7 @@ class MoviesController < ApplicationController
 
     if @movie.destroy
       flash[:success] = "Movie was successfully deleted!"
-      redirect_to theater_movies_path(@theater)
+      redirect_to theater_path(@theater)
     else
       flash[:warning] = "Unable to delete the movie"
       redirect_to theater_movie_path(@theater, @movie)

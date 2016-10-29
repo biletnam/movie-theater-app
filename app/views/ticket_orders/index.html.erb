@@ -1,5 +1,5 @@
 <div class="thumbnail padding-20">
-  <h1>Ticket Orders For: <%= @movie_screening.movie.title %></h1>
+  <h1>Ticket Orders For: <%= @movie_screening.movie.title %> at <%= @movie_screening.friendly_start_time %></h1>
 
   <div class="divider-20"></div>
 
@@ -27,14 +27,16 @@
       </p>
     </div>
   </div>
+</div>
 
-  <% @ticket_orders.each do |ticket_order| %>
-    <div class="well">
+<% if @ticket_orders.any? %>
+  <div class="thumbnail padding-20">
+    <% @ticket_orders.each do |ticket_order| %> 
       <h3>Ticket Orders</h3>
 
       <div class="divider-10"></div>
     
-      <div class="thumbnail padding-20">
+      <div class="well">
         <p>
           <strong>Customer: </strong>
           <%= ticket_order.name %>
@@ -44,9 +46,11 @@
           <%= ticket_order.price %>
         </p>
 
-        <%= link_to 'Order Details', movie_screening_ticket_order_path(@movie_screening, ticket_order), class: "btn btn-xs btn-default" %>
-        <%= link_to 'Delete', movie_screening_ticket_order_path(@movie_screening, ticket_order), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-xs btn-default" %>
+        <div class="button-list">
+          <%= link_to 'Order Details', movie_screening_ticket_order_path(@movie_screening, ticket_order), class: "btn btn-xs btn-default" %>
+          <%= link_to 'Delete', movie_screening_ticket_order_path(@movie_screening, ticket_order), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-xs btn-default" %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% end %>

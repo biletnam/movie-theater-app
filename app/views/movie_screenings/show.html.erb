@@ -39,6 +39,7 @@
       <%= link_to 'Buy Ticket', new_movie_screening_ticket_order_path(@movie_screening), class: "btn btn-default" %>
     <% end %>
     <%= link_to 'Edit', edit_movie_movie_screening_path(@movie, @movie_screening), class: "btn btn-default" %>
+    <%= link_to 'View Ticket Orders', movie_screening_ticket_orders_path(@movie_screening), class: "btn btn-default" %>
     <%= link_to 'Back To Movie', theater_movie_path(@theater, @movie), class: "btn btn-default" %>
     <%= link_to 'Delete', movie_movie_screening_path(@movie, @movie_screening), method: :delete, data: { confirm: "Are you sure you want to delete?" },class: "btn btn-default" %>
   </div>

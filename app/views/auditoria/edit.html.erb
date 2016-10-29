@@ -1,6 +1,7 @@
-<h1>Edit Auditorium</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', theater_auditorium_path(@theater, @auditorium), class: "btn btn-default" %>
-<%= link_to 'Back', theater_auditoria_path(@theater), class: "btn btn-default" %>
+<div class="thumbnail padding-20">
+  <h1>Edit Auditorium For <%= @theater.name %></h1>
+  
+  <div class="divider-20"></div>
+  
+  <%= render 'form' %>
+</div>

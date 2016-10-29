@@ -1,7 +1,5 @@
 $(document).ready(function() {
-  $('.orders-for-movie').hide()
-
-  $('.view-orders-btn').click(function(){
-     $(this).next('.orders-for-movie').show();
+  $(".well").on("click", ".view-orders-btn", function() {
+    $(this).closest('.well').find('.orders-for-movie').fadeToggle();
   });
 })

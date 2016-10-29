@@ -43,7 +43,7 @@ class TicketOrdersController < ApplicationController
   def destroy
     if @ticket_order.destroy
       flash[:success] = "Ticket order was successfully deleted!"
-      redirect_to movie_screening_ticket_orders_path(@movie_screening)
+      redirect_to theater_path(@theater)
     else
       flash[:warning] = "Unable to delete the ticket order"
       redirect_to movie_screening_ticket_order_path(@movie_screening, @ticket_order)

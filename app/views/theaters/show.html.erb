@@ -36,27 +36,41 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="movies">
-      <% @movies.each do |movie| %>
-        <div class="well">
-          <h3><%= link_to movie.title, theater_movie_path(@theater, movie) %></h3>
-          <p>
-            <strong>Auditorium: </strong>
-            <%= movie.auditorium.name %>
-          </p>
-          <% movie.movie_screenings.each do |movie_screening| %>
-            <%= link_to movie_screening.friendly_start_time, movie_movie_screening_path(movie, movie_screening), class: "btn btn-sm btn-primary #{movie_screening.disable_screening}" %>
-          <% end %>
-        </div>
+      <% if @movies.any? %>
+        <% @movies.each do |movie| %>
+          <div class="well">
+            <h3><%= link_to movie.title, theater_movie_path(@theater, movie) %></h3>
+            <p>
+              <strong>Auditorium: </strong>
+              <%= movie.auditorium.name %>
+            </p>
+            <% movie.movie_screenings.each do |movie_screening| %>
+              <%= link_to movie_screening.friendly_start_time, movie_movie_screening_path(movie, movie_screening), class: "btn btn-sm btn-primary #{movie_screening.disable_screening}" %>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <h4>No Movies</h4>
       <% end %>
     </div>
     <div role="tabpanel" class="tab-pane" id="auditoriums">
-      <% @auditoriums.each do |auditorium| %>
-        <div class="well">
-          <h3><%= link_to auditorium.name, theater_auditorium_path(@theater, auditorium) %></h3>
-        </div>
+      <% if @auditoriums.any? %>
+        <% @auditoriums.each do |auditorium| %>
+          <div class="well">
+            <h3><%= link_to auditorium.name, theater_auditorium_path(@theater, auditorium) %></h3>
+          </div>
+        <% end %>
+      <% else %>
+        <h4>No Auditoriums</h4>
       <% end %>
     </div>
     <div role="tabpanel" class="tab-pane" id="ticket-orders">
+      <div class="thumbnail padding-20">
+        <h4>
+          <strong>Total Orders: </strong>
+          <%= @ticket_orders.count %>
+          </h4>
+      </div>
       <% @ticket_orders.each do |ticket_order| %>
         <div class="well">
           <%= render 'ticket_orders/ticket_order_info', ticket_order: ticket_order %>
@@ -64,21 +78,33 @@
       <% end %>
     </div>
     <div role="tabpanel" class="tab-pane" id="movie-ticket-orders">
-      <% @movies.each do |movie| %>
-        <div class="well">
-          <h4><%= movie.title %></h4>
-          <button class="btn btn-xs btn-default view-orders-btn">View Orders</button>
+      <% if @movies.any? %>
+        <% @movies.each do |movie| %>
+          <div class="well">
+            <h3><%= link_to movie.title, theater_movie_path(@theater, movie) %></h3>
+            <p>
+              <strong>Total Orders: </strong>
+              <%= movie.total_orders %>
+            </p>
+            <% if movie.ticket_orders.any? %>
+              <button class="btn btn-xs btn-default view-orders-btn">View Orders</button>
+              <div class="divider-10"></div>
 
-          <div class="orders-for-movie">
-            <% movie.ticket_orders.order_date_desc.each do |ticket_order| %>
-              <div class="thumbnail padding-20">
-                <%= render 'ticket_orders/ticket_order_info', ticket_order: ticket_order %>
+              <div class="orders-for-movie hide-element">
+                <% movie.ticket_orders.order_date_desc.each do |ticket_order| %>
+                  <div class="thumbnail padding-20">
+                    <%= render 'ticket_orders/ticket_order_info', ticket_order: ticket_order %>
+                  </div>
+                <% end %>
               </div>
             <% end %>
           </div>
-        </div>
+        <% end %>
+      <% else %>
+        <h4>No movie ticket orders</h4>
       <% end %>
     </div>
   </div>
 </div>
+
 

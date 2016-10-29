@@ -14,22 +14,29 @@
       <%= @movie.auditorium.name %>
     </p>
   </div>
-
   <%= link_to 'Add Screening', new_movie_movie_screening_path(@movie), class: "btn btn-default" %>
+</div>
+
+<div class="thumbnail padding-20">
+  <h3>Screenings</h3>
 
   <div class="divider-20"></div>
-
-  <% @movie_screenings.each do |movie_screening| %>
-    <div class="well">
-      <h3><%= link_to movie_screening.friendly_start_time, movie_movie_screening_path(@movie, movie_screening) %></h3>
-      <p>
-        <strong>Theater: </strong>
-        <%= movie_screening.movie.theater.name %>
-      </p>
-      <p>
-        <strong>Auditorium: </strong>
-        <%= movie_screening.movie.auditorium.name %>
-      </p>
-    </div>
+  
+  <% if @movie_screenings.any? %>
+    <% @movie_screenings.each do |movie_screening| %>
+      <div class="well">
+        <h3><%= link_to movie_screening.friendly_start_time, movie_movie_screening_path(@movie, movie_screening) %></h3>
+        <p>
+          <strong>Theater: </strong>
+          <%= movie_screening.movie.theater.name %>
+        </p>
+        <p>
+          <strong>Auditorium: </strong>
+          <%= movie_screening.movie.auditorium.name %>
+        </p>
+      </div>
+    <% end %>
+  <% else %>
+    <h4>No screenings scheduled at this moment</h4>
   <% end %>
 </div>
