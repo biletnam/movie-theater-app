@@ -1,5 +1,5 @@
 class MovieScreeningsController < ApplicationController
-  before_action :set_movie
+  before_action :set_theater_and_movie
   before_action :set_movie_screening, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -48,8 +48,9 @@ class MovieScreeningsController < ApplicationController
 
   private
 
-    def set_movie
+    def set_theater_and_movie
       @movie = Movie.find(params[:movie_id])
+      @theater = @movie.theater
     end
 
     def set_movie_screening

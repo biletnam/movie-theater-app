@@ -1,5 +1,5 @@
 class TicketOrdersController < ApplicationController
-  before_action :set_movie_screening
+  before_action :set_theater_and_movie_screening
   before_action :set_ticket_order, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -52,8 +52,9 @@ class TicketOrdersController < ApplicationController
 
   private
 
-    def set_movie_screening
+    def set_theater_and_movie_screening
       @movie_screening = MovieScreening.find(params[:movie_screening_id])
+      @theater = @movie_screening.theater
     end
 
     def set_ticket_order
