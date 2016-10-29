@@ -39,10 +39,10 @@
 
   <div class="divider-20"></div>
 
-  <% if @movie.movie_screenings.any? %>
-    <% @movie.movie_screenings.each do |movie_screening| %>
+  <% if @movie_screenings.any? %>
+    <% @movie_screenings.each do |movie_screening| %>
       <div class="well">
-        <h3><%= link_to movie_screening.friendly_start_time, movie_movie_screening_path(@movie, movie_screening), class: "disable" %></h3>
+        <h3><%= link_to "#{movie_screening.friendly_screening_date} | #{movie_screening.friendly_start_time}", movie_movie_screening_path(@movie, movie_screening), class: "disable" %></h3>
         <p>
           <strong>Theater: </strong>
           <%= movie_screening.movie.theater.name %>

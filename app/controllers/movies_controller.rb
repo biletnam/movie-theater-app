@@ -22,6 +22,7 @@ class MoviesController < ApplicationController
   end
 
   def show
+    @movie_screenings = @movie.movie_screenings.current_ordered_screenings
   end
 
   def edit

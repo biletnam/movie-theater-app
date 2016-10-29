@@ -42,8 +42,8 @@
       <div class="well">
         <h3><%= link_to movie.title, theater_movie_path(@theater, movie) %></h3>
         <% if movie.movie_screenings.any? %>
-          <% movie.movie_screenings.each do |movie_screening| %>
-            <%= link_to movie_screening.friendly_start_time, movie_movie_screening_path(movie, movie_screening), class: "btn btn-sm btn-primary" %>
+          <% movie.movie_screenings.current_ordered_screenings.each do |movie_screening| %>
+            <%= link_to "#{movie_screening.friendly_screening_date} | #{movie_screening.friendly_start_time}", movie_movie_screening_path(movie, movie_screening), class: "btn btn-sm btn-primary #{movie_screening.disable_screening}" %>
           <% end %>
         <% else %>
           <p>No screenings scheduled at the moment</p>

@@ -3,7 +3,7 @@ class MovieScreeningsController < ApplicationController
   before_action :set_movie_screening, only: [:show, :edit, :update, :destroy]
   
   def index
-    @movie_screenings = @movie.movie_screenings
+    @movie_screenings = @movie.movie_screenings.current_ordered_screenings
   end
 
   def new
