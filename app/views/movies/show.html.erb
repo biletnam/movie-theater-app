@@ -24,9 +24,7 @@
       <%= number_to_currency(@movie.ticket_price) %>
     </p>
   </div>
-
-  <div class="divider-20"></div>
-  
+    
   <div class="button-list">
     <%= link_to 'Edit', edit_theater_movie_path(@theater, @movie), class: "btn btn-default" %>
     <%= link_to 'Back To Theater', theater_path(@theater), class: "btn btn-default" %>
