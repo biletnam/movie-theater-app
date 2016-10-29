@@ -28,7 +28,6 @@
             <% if @theater && @theater.id %>
               <li class="active"><%= link_to "Theater Home", theater_path(@theater) %></li>
             <% end %>
-              <li><a href="/theaters/new">Add Theater</a></li>
             <% if @theater && @theater.id %>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Theater <span class="caret"></span></a>
@@ -40,6 +39,7 @@
                 </ul>
               </li>
             <% end %>
+            <li><%= link_to "Add Theater", new_theater_path %></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
