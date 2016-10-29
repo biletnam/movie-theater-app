@@ -3,17 +3,17 @@
   
   <div class="divider-20"></div>
 
-  <p>
-    <strong>Manager:</strong>
-    <%= @theater.manager %>
-  </p>
+  <div class="well">
+    <p>
+      <strong>Manager:</strong>
+      <%= @theater.manager %>
+    </p>
 
-  <p>
-    <strong>Street Address:</strong>
-    <%= @theater.full_address %>
-  </p>
-
-  <div class="divider-20"></div>
+    <p>
+      <strong>Street Address:</strong>
+      <%= @theater.full_address %>
+    </p>
+  </div>
   
   <div class="button-list">
     <%= link_to 'Edit', edit_theater_path(@theater), class: "btn btn-default" %>

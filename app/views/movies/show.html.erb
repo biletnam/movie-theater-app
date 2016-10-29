@@ -1,25 +1,29 @@
 <div class="thumbnail padding-20">
   <h1><%= @movie.title %></h1>
 
-  <p>
-    <strong>Theater:</strong>
-    <%= @theater.name %>
-  </p>
+  <div class="divider-20"></div>
+  
+  <div class="well">
+    <p>
+      <strong>Theater:</strong>
+      <%= @theater.name %>
+    </p>
 
-  <p>
-    <strong>Auditorium:</strong>
-    <%= @movie.auditorium.name %>
-  </p>
+    <p>
+      <strong>Auditorium:</strong>
+      <%= @movie.auditorium.name %>
+    </p>
 
-  <p>
-    <strong>Run Time:</strong>
-    <%= @movie.run_time_hours %>
-  </p>
+    <p>
+      <strong>Run Time:</strong>
+      <%= @movie.run_time_hours %>
+    </p>
 
-  <p>
-    <strong>Ticket Price:</strong>
-    <%= number_to_currency(@movie.ticket_price) %>
-  </p>
+    <p>
+      <strong>Ticket Price:</strong>
+      <%= number_to_currency(@movie.ticket_price) %>
+    </p>
+  </div>
 
   <div class="divider-20"></div>
   

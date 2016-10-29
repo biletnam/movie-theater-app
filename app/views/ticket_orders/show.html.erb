@@ -5,71 +5,85 @@
 
   <p><em>You will receive an email receipt for your order at <%= @ticket_order.email %></em></p>
 
+  <div class="divider-20"></div>
+
   <div class="well">
-    <h3>Customer Information</h3>
+    <h3>Customer Order Information</h3>
 
-    <p>
-      <strong>Order Date: </strong>
-      <%= @ticket_order.order_date %>
-    </p>
+    <div class="divider-10"></div>
 
-    <p>
-      <strong>Order Name:</strong>
-      <%= @ticket_order.name %>
-    </p>
+    <div class="thumbnail padding-20">
+      <p>
+        <strong>Order Date: </strong>
+        <%= @ticket_order.order_date %>
+      </p>
 
-    <p>
-      <strong>Order Email:</strong>
-      <%= @ticket_order.email %>
-    </p>
+      <p>
+        <strong>Order Name:</strong>
+        <%= @ticket_order.name %>
+      </p>
+
+      <p>
+        <strong>Order Email:</strong>
+        <%= @ticket_order.email %>
+      </p>
+    </div>
   </div>
 
   <div class="well">
     <h3>Movie Details</h3>
+
+    <div class="divider-10"></div>
     
-    <p>
-      <strong>Movie:</strong>
-      <%= @movie_screening.movie.title %>
-    </p>
+    <div class="thumbnail padding-20">
+      <p>
+        <strong>Movie:</strong>
+        <%= @movie_screening.movie.title %>
+      </p>
 
-    <p>
-      <strong>Theater:</strong>
-      <%= @movie_screening.movie.theater.name %>
-    </p>
+      <p>
+        <strong>Theater:</strong>
+        <%= @movie_screening.movie.theater.name %>
+      </p>
 
-    <p>
-      <strong>Auditorium:</strong>
-      <%= @movie_screening.movie.auditorium.name %>
-    </p>
+      <p>
+        <strong>Auditorium:</strong>
+        <%= @movie_screening.movie.auditorium.name %>
+      </p>
 
-    <p>
-      <strong>Start Time:</strong>
-      <%= @movie_screening.friendly_start_time %>
-    </p>
+      <p>
+        <strong>Start Time:</strong>
+        <%= @movie_screening.friendly_start_time %>
+      </p>
 
-    <p>
-      <strong>Run Time:</strong>
-      <%= @movie_screening.movie.run_time_hours %>
-    </p>
+      <p>
+        <strong>Run Time:</strong>
+        <%= @movie_screening.movie.run_time_hours %>
+      </p>
+    </div>
   </div>
 
   <div class="well">
     <h3>Payment Details</h3>
+    
+    <div class="divider-10"></div>
+    
+    <div class="thumbnail padding-20">
+      <p>
+        <strong>Credit Card:</strong>
+        <%= @ticket_order.starred_cc_number %>
+      </p>
 
-    <p>
-      <strong>Credit Card:</strong>
-      <%= @ticket_order.starred_cc_number %>
-    </p>
+      <p>
+        <strong>Credit Card Expiration Date:</strong>
+        <%= @ticket_order.cc_expiration_date %>
+      </p>
 
-    <p>
-      <strong>Credit Card Expiration Date:</strong>
-      <%= @ticket_order.cc_expiration_date %>
-    </p>
-
-    <p>
-      <strong>Total:</strong>
-      <%= number_to_currency(@ticket_order.price) %>
-    </p>
+      <p>
+        <strong>Total:</strong>
+        <%= number_to_currency(@ticket_order.price) %>
+      </p>
+    </div>
   </div>
 
   <%= link_to 'Edit Order', edit_movie_screening_ticket_order_path(@movie_screening, @ticket_order), class: "btn btn-default" %>
