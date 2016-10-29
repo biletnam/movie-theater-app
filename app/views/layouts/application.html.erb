@@ -33,7 +33,9 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Theater <span class="caret"></span></a>
                 <ul class="dropdown-menu">
+                  <li><%= link_to "View Auditoriums", theater_auditoria_path(@theater) %></li>
                   <li><%= link_to "Add Auditorium", new_theater_auditorium_path(@theater) %></li>
+                  <li><%= link_to "View Movies", theater_movies_path(@theater) %></li>
                   <li><%= link_to "Add Movie", new_theater_movie_path(@theater) %></li>
                 </ul>
               </li>

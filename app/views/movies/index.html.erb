@@ -1,8 +1,18 @@
-<h1>Movies at <%= @theater.name %></h1>
+<div class="thumbnail padding-20">
+  <h1>Movies at <%= @theater.name %></h1>
 
-<% @movies.each do |movie| %>
-  <div class="well">
-    <h3><%= link_to movie.title, theater_movie_path(@theater, movie) %></h3>
-    <p><strong>Auditorium: </strong><%= movie.auditorium.name %></p>
-  </div>
-<% end %>
+  <div class="divider-20"></div>
+
+  <% @movies.each do |movie| %>
+    <div class="well">
+      <h3><%= link_to movie.title, theater_movie_path(@theater, movie) %></h3>
+      <p>
+        <strong>Auditorium: </strong>
+        <%= movie.auditorium.name %>
+      </p>
+      <% movie.movie_screenings.each do |movie_screening| %>
+        <%= link_to movie_screening.friendly_start_time, movie_movie_screening_path(movie, movie_screening), class: "btn btn-sm btn-primary #{movie_screening.disable_screening}" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

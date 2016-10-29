@@ -25,9 +25,9 @@
   
   <div class="button-list">
     <%= link_to 'Edit', edit_theater_movie_path(@theater, @movie), class: "btn btn-default" %>
-    <%= link_to 'Back', theater_movies_path(@theater), class: "btn btn-default" %>
+    <%= link_to 'Back To Theater', theater_path(@theater), class: "btn btn-default" %>
     <%= link_to 'Add Screening', new_movie_movie_screening_path(@movie), class: "btn btn-default" %>
-    <%= link_to 'Delete', theater_movie_path(@theater, @movie), method: :delete, class: "btn btn-default" %>
+    <%= link_to 'Delete', theater_movie_path(@theater, @movie), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-default" %>
   </div>
 </div>
   
@@ -36,7 +36,7 @@
   <h3>Screenings</h3>
 
   <div class="divider-20"></div>
-  
+
   <% @movie.movie_screenings.each do |movie_screening| %>
     <div class="well">
       <h3><%= link_to movie_screening.friendly_start_time, movie_movie_screening_path(@movie, movie_screening), class: "disable" %></h3>
@@ -50,6 +50,8 @@
       </p>
       <% if movie_screening.sold_out? %>
         <h4 class="sold-out"><strong>Sold Out!</strong></h4>
+      <% else %>
+        <%= link_to 'Buy Ticket', new_movie_screening_ticket_order_path(movie_screening), class: "btn btn-xs btn-default" %>
       <% end %>
     </div>
   <% end %>
