@@ -6,7 +6,7 @@ class MovieScreening < ApplicationRecord
   validates :movie_id, :theater_id, :screening_date, :start_time, presence: true
   validates :movie_id, :theater_id, numericality: { only_integer: true }
 
-  scope :current_ordered_screenings, -> { where('screening_date >= ?', Date.today).order(:screening_date)}
+  scope :current_ordered_screenings, -> { where('screening_date >= ?', Date.today).order(:screening_date).order(:start_time)}
 
   def friendly_start_time
     start_time.strftime("%l:%M %p")
