@@ -11,10 +11,6 @@ class TicketOrder < ApplicationRecord
   validates :price, numericality: { greater_than_or_equal_to: 0}
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
-  def cc_last_four_digits
-    credit_card_number
-  end
-
   def starred_cc_number
     card_number = credit_card_number
     card_number_array = card_number.split("")

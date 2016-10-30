@@ -41,5 +41,4 @@ class MovieScreening < ApplicationRecord
       false
     end
   end
-
 end
