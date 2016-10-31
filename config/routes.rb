@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root "theaters#index"
   
   resources :theaters do
-    resources :auditoria
     resources :movies
+    resources :auditoria
   end
 
   resources :movies do

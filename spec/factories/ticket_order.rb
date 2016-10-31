@@ -10,7 +10,7 @@ FactoryGirl.define do
     ticket_date Date.today
     
     factory :invalid_ticket_order do 
-      screening_date nil
+      name nil
     end
   end
 end
