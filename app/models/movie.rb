@@ -35,4 +35,8 @@ class Movie < ApplicationRecord
   def total_orders
     ticket_orders.count
   end
+
+  def self.order_by_tickets_sold
+    ordered_sales_movies = Movie.all.sort { |a, b| b.ticket_orders.count <=> a.ticket_orders.count }
+  end
 end

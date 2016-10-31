@@ -79,7 +79,7 @@
     </div>
     <div role="tabpanel" class="tab-pane" id="movie-ticket-orders">
       <% if @movies.any? %>
-        <% @movies.each do |movie| %>
+        <% @movies.order_by_tickets_sold.each do |movie| %>
           <div class="well">
             <h3><%= link_to movie.title, theater_movie_path(@theater, movie) %></h3>
             <p>

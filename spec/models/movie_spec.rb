@@ -29,5 +29,27 @@ RSpec.describe Movie, :type => :model do
 
       expect(movie.total_orders).to eq(2)
     end
+
+    it "orders movies by number of tickets sold, descending" do
+      movie_one = create(:movie)
+      movie_screening_one = create(:movie_screening, movie_id: movie_one.id)
+      create(:ticket_order, movie_screening_id: movie_screening_one.id)
+    
+      movie_two = create(:movie)
+      movie_screening_two = create(:movie_screening, movie_id: movie_two.id)
+      create(:ticket_order, movie_screening_id: movie_screening_two.id)
+      create(:ticket_order, movie_screening_id: movie_screening_two.id)
+
+      movie_three = create(:movie)
+      movie_screening_three = create(:movie_screening, movie_id: movie_three.id)
+      create(:ticket_order, movie_screening_id: movie_screening_three.id)
+      create(:ticket_order, movie_screening_id: movie_screening_three.id)
+      create(:ticket_order, movie_screening_id: movie_screening_three.id)
+
+      ordered_movies = Movie.all.order_by_tickets_sold
+
+      expect(ordered_movies.first).to eq(movie_three)
+      expect(ordered_movies.last).to eq(movie_one)
+    end
   end
 end

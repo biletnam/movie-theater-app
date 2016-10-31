@@ -43,7 +43,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
   gem 'rails-controller-testing'
-  # gem 'timecop'
 end
 
 group :development do
