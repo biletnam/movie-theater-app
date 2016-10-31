@@ -43,7 +43,7 @@ Finally, once a customer has decided which movie screening they would like to bu
 
 These were the 5 basic models I thought were enough to get a simple movie theater started. Once a user visits the page and chooses their theater, the theater show page contains all the movies playing and their available show times. Since the movie screenings have all the relevant date/time information and are tied to the ticket_orders table, I created some model methods to check the amount of tickets remaining for each screening, ensuring sold out screenings were marked as such and then disabled the ability to create a ticket order for a past or sold out screening. 
 
-For ticket orders, I used a the gem 'credit_card_validations' and a jQuery.payment plugin to validate the customer credit cards and simple date validations for expiration dates. Once submitted successfully, users will receive a ticket order summary/receipt to their email, which was set up with sendgrid.
+For ticket orders, I used a the gem 'credit_card_validations' and a jQuery.payment plugin to validate the customer credit cards and simple date validations for expiration dates. Once submitted successfully, users will receive a ticket order summary/receipt to their email, which was set up with SendGrid.
 
 The theater show page is also the main place for the owner to check out all business details. The tabs for auditoriums lets you choose an auditorium to see all movies being played inside and their showtimes. The orders tab shows all individual orders with the earliest orders first. The final 'orders by movie' tab can be clicked to reveal all the orders for each movie playing in the theater, with movies ordered from highest to least ticket orders.
 
@@ -66,7 +66,7 @@ To make sure all the model methods I wrote and all controller actions affecting 
 
 * gem 'bootstrap-sass', '~> 3.3.6' - A gem to install the bootstrap css framework
 * gem 'credit_card_validations' - A gem that adds a validator to check whether or not a given number actually falls within the ranges of possible numbers
-* gem 'sendgrid' - A gem to set up email sending services with action mailer and the sendgrid smtp api
+* gem 'sendgrid' - A gem to set up email sending services with action mailer and the SendGrid smtp api
 
 * gem 'rspec-rails', '~> 3.5' - A gem that allows a user to create tests for the application
 * gem 'factory_girl_rails' - A gem used in tandem with RSpec to create factories for tests
@@ -79,7 +79,7 @@ To make sure all the model methods I wrote and all controller actions affecting 
 After cloning this repo in your terminal, run
 ```terminal
 bundle
-bundle exec figaro install # generates config/application.yml to store environment variables for sendgrid, etc
+bundle exec figaro install # generates config/application.yml to store environment variables for SendGrid, etc
 ```
 
 #### Database Configuration
