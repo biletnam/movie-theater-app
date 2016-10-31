@@ -71,7 +71,9 @@ To make sure all the model methods I wrote and all controller actions affecting 
 * gem 'rspec-rails', '~> 3.5' - A gem that allows a user to create tests for the application
 * gem 'factory_girl_rails' - A gem used in tandem with RSpec to create factories for tests
 * gem 'rails-controller-testing' - A gem to help integrate assigns feature for controller tests
-* gem 'faker' - A gem used to create fake data for testing purposes, also necessary to run the seed file
+* gem 'database_cleaner' - A gem to keep clean databases during tests
+* gem 'faker' - A gem used to create fake data for 
+testing purposes, also necessary to run the seed file
 
 
 ### Install Features
