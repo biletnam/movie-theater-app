@@ -1,6 +1,6 @@
 # Movie Theater App
 
-### Models/Tables (Theaters, Auditoriums, Movies, MovieScreenings, TicketOrders)
+### Models/Tables (Theaters, Auditoria, Movies, MovieScreenings, TicketOrders)
 
 #### Theaters 
 Theaters are the main table of the app. They are associated in a has_many relationship with all other tables and hold the basic movie theater information a customer might want to know
@@ -8,22 +8,22 @@ Theaters are the main table of the app. They are associated in a has_many relati
 * manager
 * street_address, city, state, zip
 
-#### Auditoriums(Auditoria)
-A theater consists of many auditoriums, so they belong_to a theater, and have many movies to play. Since the amount of tickets that can be sold depends on the seats available in a movie's auditorium, this table holds the editable seating_capacity field 
+#### Auditoria(Auditoriums)
+A theater consists of many auditoria, so they belong_to a theater, and have many movies to play. Since the amount of tickets that can be sold depends on the seats available in a movie's auditorium, this table holds the editable seating_capacity field 
 * name
 * seating_capacity
 * theater_id
 
 #### Movies
-The next major table are the movies. Movies belong_to a theater and the auditorium in which a movie can play. Placing a foreign_key for an auditorium allows the theater owner to easily change in which auditorium a movie will play. Since a movie can be shown several times a day, they have a has_many relationship with two other tables: movie screenings and ticket orders 
+The next major table is for the movies. Movies belong_to a theater and the auditorium in which a movie can play. The foreign key for an auditorium allows the theater owner to easily change in which auditorium a movie will play. Since a movie can be shown several times a day, they have a has_many relationship with two other tables: movie screenings and ticket orders 
 * title
 * run_time_minutes
 * ticket_price
 * auditorium_id
-* ticket_id
+* theater_id
 
 #### Movie Screenings
-Movie Screenings hold the individual screening date/time data for each movie a customer may want to see. Therefore they belong_to a movie, as well as a theater.From an individual screening page, customers can create a ticket order for that show, so a movie_screening has_many ticket_orders. The date and time attributes and relationship to ticket orders allows the owner to control the visibility of movie screenings, making past shows and sold out shows unavailable for purchase.
+Movie Screenings hold the individual screening date/time data for each movie a customer may want to see. Therefore they belong_to a movie, as well as a theater. From an individual screening page, customers can create a ticket order for that show, so a movie_screening has_many ticket_orders. The date and time attributes and relationship to ticket orders allows the owner to control the visibility of movie screenings, making past shows and sold out shows unavailable for purchase.
 * screening_date
 * start_time
 * movie_id
