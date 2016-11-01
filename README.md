@@ -15,7 +15,7 @@ A theater consists of many auditoria, so they belong_to a theater, and have many
 * theater_id
 
 #### Movies
-The next major table is for the movies. Movies belong_to a theater and the auditorium in which a movie can play. The foreign key for an auditorium allows the theater owner to easily change in which auditorium a movie will play. Since a movie can be shown several times a day, they have a has_many relationship with two other tables: movie screenings and ticket orders 
+The next major table is for the movies. Movies belong_to a theater and the auditorium in which a movie can play. The foreign key for an auditorium allows the theater owner to easily change the auditorium in which a movie will play. Since a movie can be shown several times a day, they have a has_many relationship with two other tables: movie screenings and ticket orders 
 * title
 * run_time_minutes
 * ticket_price
@@ -23,14 +23,14 @@ The next major table is for the movies. Movies belong_to a theater and the audit
 * theater_id
 
 #### Movie Screenings
-Movie Screenings hold the individual screening date/time data for each movie a customer may want to see. Therefore they belong_to a movie, as well as a theater. From an individual screening page, customers can create a ticket order for that show, so a movie_screening has_many ticket_orders. The date and time attributes and relationship to ticket orders allows the owner to control the visibility of movie screenings, making past shows and sold out shows unavailable for purchase.
+Movie Screenings hold the individual screening date/time data for each movie a customer may want to see. Therefore they belong_to a movie, as well as a theater. From an individual screening page, customers can create a ticket order for that show, so a movie_screening has_many ticket_orders. The date and time attributes and relationship to ticket orders allow the owner to control the visibility of movie screenings, making past shows and sold out shows unavailable for purchase.
 * screening_date
 * start_time
 * movie_id
 * theater_id
 
 #### Ticket Orders
-Finally, once a customer has decided which movie screening they would like see, they can create a new ticket order, which belongs_to a movie screening, allowing the order to have access to all relevant movie, auditorium, and theater info for the customer's ticket/receipt.
+Finally, once a customer has decided which movie screening they would like to see, they can create a new ticket order, which belongs_to a movie screening, allowing the order to have access to all relevant movie, auditorium, and theater info for the customer's ticket/receipt.
 * price
 * paid
 * name
